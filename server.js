@@ -15,9 +15,9 @@ app.use(bodyparser.urlencoded({extend: false}))
 
 //connect to db
 mongoose
-    .connect(db)
-    .then(() => console.log('mondoDB connected'))
-    .catch(err => console.log(err));
+	.connect(db)
+	.then(() => console.log('mondoDB connected'))
+	.catch(err => console.log(err));
 
 //Passport middleware
 app.use(passport.initialize());

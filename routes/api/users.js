@@ -77,11 +77,11 @@ router.post('/login', (req, res) => {
 
     User.findOne({email})
         .then(user => {
-            if (!user) {
-                return res.status(404).json({email: 'User not found'});        
-            }
+        if (!user) {
+            return res.status(404).json({email: 'User not found'});        
+        }
             
-            //Check password
+        //Check password
             bcrypt.compare(password, user.password)
                 .then(isMatch => {
                     if(isMatch) {
@@ -119,10 +119,11 @@ router.get(
     passport.authenticate('jwt', {session: false}),
     (req, res) => {
         res.json({
-            name: req.user.name,
-            id: req.user.id,
-            email: req.user.email
+        name: req.user.name,
+        id: req.user.id,
+        email: req.user.email
         });
-    })
+    }
+)
 
 module.exports = router;
