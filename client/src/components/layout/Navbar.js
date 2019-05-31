@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loginrUser } from '../../actions/authActions';
+import { logoutUser } from '../../actions/authActions';
 import PropTypes from 'prop-types';
 
 
@@ -18,22 +18,21 @@ class Navbar extends Component {
     const authLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
-            <a href =""
-            onClick = {this.onLogout(link.bind(this))}
-            className="nav-link">
-
-            <img className="rounded-circle"
-              src={user.avatar}
-              alt={user.name}
-              style={{width: '25px', marginRight: '5px'}}
-              title="You must have a Gravatar connected to your email to display an image"/>{' '}
+            <a 
+              href="/login"
+              onClick={this.onLogoutClick.bind(this)}
+              className="nav-link"
+            >
+              <img className="rounded-circle"
+                src={user.avatar}
+                alt={user.name}
+                style={{width: '25px', marginRight: '5px'}}
+                title="You must have a Gravatar connected to your email to display an image"/>{' '}
               Logout  
-              </a>
+            </a>
         </li>
-        <li className="nav-item">
-            <Link className="nav-link" to="/login">Login</Link>
-        </li>
-      </ul>);
+      </ul>
+    );
 
     const guestLinks = (
       <ul className="navbar-nav ml-auto">
@@ -69,7 +68,7 @@ class Navbar extends Component {
   }
 }
 
-Narbar.PropTypes = {
+Navbar.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
 }
@@ -78,4 +77,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, {logoutUser})(withRouter(Navbar));
+export default connect(mapStateToProps, {logoutUser})(Navbar);

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
-import { loginrUser } from '../../actions/authActions';
+import { loginUser } from '../../actions/authActions';
 import PropTypes from 'prop-types';
 
 class Login extends Component {
@@ -35,7 +35,7 @@ class Login extends Component {
       password: this.state.password
     };
 
-    this.props.loginUser(user);
+    this.props.loginUser(userData);
   }
 
 
@@ -89,7 +89,7 @@ class Login extends Component {
   }
 }
 
-Login.PropTypes = {
+Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired

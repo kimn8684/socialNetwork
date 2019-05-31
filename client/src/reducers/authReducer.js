@@ -1,4 +1,4 @@
-import { TEST_DISPATCH } from '../actions';
+
 import { SET_CURRENT_USER } from '../actions/types';
 import isEmpty from '../utils/is-empty';
 
@@ -13,11 +13,6 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 isAuthenticated: !isEmpty(action.payload),
-                user: action.payload
-            }
-        case TEST_DISPATCH:
-            return {
-                ...state,
                 user: action.payload
             }
         default:

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import jwt_decode from 'jwt-decode';
@@ -22,7 +22,7 @@ if (localStorage.jwtToken) {
   //Set user and isAuthenticated
   store.dispatch(setCurrentUser(decoded));
   //Check for expired token
-  const currentTime = Data.now()/100;
+  const currentTime = Date.now()/100;
 
   if (decoded.exp < currentTime) {
     //Logout user
@@ -35,6 +35,7 @@ if (localStorage.jwtToken) {
 
 class App extends Component {
   render() {
+    return (
     <Provider store={store}>
       <Router>
         <div className="App">
@@ -48,7 +49,8 @@ class App extends Component {
         </div>
       </Router>
     </Provider>
-  };
+    );
+  }
 }
 
 export default App;
